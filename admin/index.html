@@ -1,0 +1,108 @@
+<!doctype html>
+<html ng-app="app">
+<head>
+    <title>WJP Admin</title>
+    <base href="/admin/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Bootstrap Admin CSS -->
+    <link rel="stylesheet" href="libs/bootstrap/css/bootstrap.min.css">
+    <link href="libs/bootstrap-admin/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="libs/bootstrap-admin/css/sb-admin.css" rel="stylesheet">
+</head>
+<body ng-controller="mainController">
+
+
+	<div id="wrapper">
+
+
+		<!-- Header -->
+		<nav class="navbar navbar-default navbar-static-top navbar-inverse" style="margin-bottom:0px;">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/dashboard">WJP Site Manager</a>
+            </div>
+            <div class="upload pull-right">
+            	<form method="post" enctype="multipart/form-data" action="/file-upload">
+				    <input type="file" name="filepreview" style="color: white; border: none;position: relative; left: -80px;top: 18px;">
+				    <input type="submit" style="float: right;
+background: #FD9800;
+border: none;
+border-radius: 80px;
+width: 120px;
+padding-top: 6px;
+padding-bottom: 6px;
+position: relative;
+top: -9px;
+right: 6px;">
+				</form>
+            </div>
+        </nav>
+
+
+		<!-- Sidebar -->
+		<nav class="navbar-default navbar-static-side" role="navigation">
+	        <div class="sidebar-collapse">
+	            <ul class="nav" id="side-menu">
+	                <li ng-class="{active:isActive('/stories')}">
+	                    <a href="#/stories">
+	                    	<i class="fa fa-pencil fa-fw"></i> Stories
+	                    </a>
+	                </li>
+	                <li ng-class="{active:isActive('/experiences')}">
+	                    <a href="#/experiences">
+	                    	<i class="fa fa-sun-o fa-fw"></i> Experiences
+	                    </a>
+	                </li>
+	                 <li ng-class="{active:isActive('/tracks')}">
+	                    <a href="#/tracks">
+	                    	<i class="fa fa-music fa-fw"></i> Tracks
+	                    </a>
+	                </li>
+	                <li>
+	                    <a href="" ng-click="signOut()">
+	                    	<i class="fa fa-sign-out fa-fw"></i> Sign Out
+	                    </a>
+	                </li>
+	            </ul>
+	        </div>
+	    </nav>
+
+
+		<!-- Page Content -->
+		<div id="page-wrapper">
+			<ng-view></ng-view>
+		</div>
+
+
+	</div><!-- end #wrapper -->
+
+
+
+
+	<!-- Bootstrap Admin Dependencies -->
+    <script src="libs/jquery/jquery.min.js"></script>
+	<!-- <script src="libs/jquery/jquery.hotkeys.js"></script> -->
+    <script src="libs/bootstrap-admin/js/bootstrap.min.js"></script>
+    <script src="libs/bootstrap-admin/js/jquery.metisMenu.js"></script>
+    <script src="libs/bootstrap-admin/js/sb-admin.js"></script>
+
+	<!-- AngularJS -->
+	<script src="libs/ace/ace.js"></script>
+<!--     <script src="libs/angular/1.3/angular.js"></script> -->
+    <script src="libs/angular/angular.min.js"></script>
+	<script src="libs/ace/ui-ace.js"></script>
+    <script src="libs/angular/angular-route.min.js"></script>
+    <script src="libs/angular/angular-resource.min.js"></script>
+    <script src="libs/angular/ng-table.min.js"></script>
+    <script src="app/app.js"></script>
+    <script src="app/factories.js"></script>
+
+</body>
+</html>

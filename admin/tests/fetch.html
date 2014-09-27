@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+	
+		$.getJSON('/api/sales', {
+			limit: 5,
+			sort: { created: -1 }
+		}, function(res){
+			console.log(res);
+		});
+	</script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Stories</h1>
+
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">
+					<div class="btn-group pull-left">
+						<button 
+							ng-click="status='active'" 
+							ng-class="{active:status=='active'}" 
+							class="btn btn-default">Active</button>
+						<button 
+							ng-click="status='staging'" 
+							ng-class="{active:status=='staging'}" 
+							class="btn btn-default">Staging</button>
+						<button 
+							ng-click="status='inactive'" 
+							ng-class="{active:status=='inactive'}" 
+							class="btn btn-default">Inactive</button>
+					</div>
+
+					<a href="#/stories/create" class="btn btn-primary pull-right">
+						<i class="fa fa-rocket fa-fw"></i> Create Story
+					</a>
+				</div>
+
+				<table class="table table-striped panel-body">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Date</th>
+							<th>Cover Photo</th>
+							<th>Home Hero</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="story in stories | filter: status">
+							<!-- <td><i class="fa fa-bars fa-fw" style="cursor:-webkit-grab;"></i></td> -->
+							<td><a href="#/stories/{{ story._id }}">{{ story.title }}</a></td>
+							<td><a href="#/stories/{{ story._id }}">{{ story.date }}</a></td>
+							<td>
+								<div class="cover-preview" style="background: url('{{story.coverPhoto}}'); width: 100px; height: 100px; background-size: cover; background-position: center center;">
+									
+								</div>
+							</td>
+							<td>{{story.isFeatured}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>

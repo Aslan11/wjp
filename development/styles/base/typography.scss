@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'sackers';
+  src: url('fonts/sackers.ttf') format('truetype');
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 15px;
+	font-smoothing: antialiased;
+
+}	
+
+a{
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+
+	&:hover{
+		color: black;
+	}
+}
+
+p{
+	font-size: 14px;
+	font-weight: 300;
+	line-height: 1.8em;
+}

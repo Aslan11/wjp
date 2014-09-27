@@ -1,0 +1,27 @@
+.tracks{
+	max-width: 1220px;
+	width: 94%;
+	margin: 0 auto;
+	height: auto;
+	padding-top: 60px;
+}
+
+.track{
+	width: 100%;
+	margin-bottom: 80px;
+
+	.sub-title{
+		margin: 10px 0;
+		a{
+			color: #757575;
+			text-decoration: none;
+			font-size: 19px;
+		}
+	}
+
+	.date{
+		font-size: 12px;
+		font-weight: 500;
+		color: #B6B6B6;
+	}
+}

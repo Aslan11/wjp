@@ -1,0 +1,53 @@
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Customers</h1>
+
+			<h3 class="text-center" ng-show="loading">Loading customers...</h3>
+
+			<div class="row" ng-hide="loading">
+			
+				<div class="col-md-4" style="margin-bottom:20px;">
+					<input type="text" ng-model="search" class="form-control" placeholder="Search" tabindex="1"/>
+				</div>
+				<div class="col-md-8">
+					<!--
+<div class="btn-group pull-right">
+						<button class="btn btn-default" ng-click="previous()">Previous</button>
+						<button class="btn btn-default" ng-click="next()">Next</button>
+					</div>
+-->
+				</div>
+				
+				<div class="col-md-12">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="user in users | filter: search | startFrom: skip | limitTo: limit">
+								<td><a href="https://ui8.fetchapp.com/admin/orders?q={{ user.email }}" target="_blank">{{ user.first_name }} {{ user.last_name }}</a></td>
+								<td>{{ user.email }}</td>
+							</tr>
+						</tbody>
+					</table>
+					
+					<div class="alert alert-info">Pagination coming soon. Please use Search for now.</div>
+				</div>
+            </div>
+            
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+

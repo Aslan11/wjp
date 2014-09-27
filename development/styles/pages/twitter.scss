@@ -1,0 +1,70 @@
+.tweets{
+	max-width: 1380px;
+	margin: 0 auto;
+	margin-top: 80px;	
+	width: 94%;
+}
+
+.tweet{
+	width: calc(50% - 45px);
+	float: left;
+	vertical-align: top;
+	min-height: 500px;
+
+	&:nth-of-type(odd){
+		margin-right: 90px;
+	}
+
+	header, footer{
+		width: 277px;
+		margin: 0 auto;
+		height: 80px;
+	}
+
+	header{
+		border-bottom: 1px solid #C4C4C3;
+	}
+
+	footer{
+		border-top: 1px solid #C4C4C3;
+		text-align: center;
+		padding-top: 20px;
+
+		i{
+			font-size: 50px;
+			color: #C4C4C3;
+		}
+	}
+
+	header .avatar{
+		width: 60px;
+		height: 60px;
+		border-radius: 60px;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center center;
+		float: left;
+	}
+
+	header .name{
+		font-weight: 500;
+		font-size: 17px;
+		padding-top: 10px;
+		padding-left: 72px;
+	}
+
+	header .twitter-name{
+		font-weight: 400;
+		font-size: 14px;
+		color: #C4C4C3;
+		padding-left: 74px;
+	}
+
+	.text{
+		font-size: 30px;
+		text-align: center;
+		margin-top: 20px;
+		margin-bottom: 30px;
+		line-height: 1.7em
+	}
+}

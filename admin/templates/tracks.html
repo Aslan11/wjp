@@ -1,0 +1,50 @@
+
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Tracks</h1>
+
+			<div class="panel panel-default">
+				<div class="panel-heading clearfix">
+					<div class="btn-group pull-left">
+						<button 
+							ng-click="status='active'" 
+							ng-class="{active:status=='active'}" 
+							class="btn btn-default">Active</button>
+						<button 
+							ng-click="status='staging'" 
+							ng-class="{active:status=='staging'}" 
+							class="btn btn-default">Staging</button>
+						<button 
+							ng-click="status='inactive'" 
+							ng-class="{active:status=='inactive'}" 
+							class="btn btn-default">Inactive</button>
+					</div>
+
+					<a href="#/tracks/create" class="btn btn-primary pull-right">
+						<i class="fa fa-rocket fa-fw"></i> Create Track
+					</a>
+				</div>
+
+				<table class="table table-striped panel-body">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Date</th>
+							<th>Track</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="track in tracks | reverse">
+							<!-- <td><i class="fa fa-bars fa-fw" style="cursor:-webkit-grab;"></i></td> -->
+							<td><a href="#/tracks/{{ track._id }}">{{ track.title }}</a></td>
+							<td><a href="#/tracks/{{ track._id }}">{{ track.date }}</a></td>
+							<td>
+								{{track.embedURL}}
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>

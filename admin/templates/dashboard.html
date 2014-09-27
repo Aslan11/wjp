@@ -1,0 +1,144 @@
+
+	<div class="row">
+		<div class="col-lg-12">
+			<h1 class="page-header">Dashboard</h1>
+
+			<!-- Quick Numbers -->
+			<div class="row">
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-bar-chart-o fa-fw"></i> Sales Today
+		                </div>
+		                <div class="panel-body">
+							<h1>{{ countToday }}</h1>
+		                </div>
+		            </div>
+	            </div>
+	            <div class="col-md-3">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-money fa-fw"></i> Revenue Today
+		                </div>
+		                <div class="panel-body">
+							<h1>${{ salesToday | number }}</h1>
+		                </div>
+		            </div>
+	            </div>
+				<div class="col-md-3">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-bar-chart-o fa-fw"></i> Sales This Week
+		                </div>
+		                <div class="panel-body">
+							<h1>{{ countWeek }}</h1>
+		                </div>
+		            </div>
+	            </div>
+	            <div class="col-md-3">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-money fa-fw"></i> Revenue This Week
+		                </div>
+		                <div class="panel-body">
+							<h1>${{ salesWeek | number }}</h1>
+		                </div>
+		            </div>
+	            </div>
+            </div>
+
+
+		
+
+
+	        <!-- Orders -->
+            <div class="row">
+            
+            	 <div class="col-md-6">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-tags fa-fw"></i> Recent Orders
+		                </div>
+		                <div class="panel-body">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Items</th>
+										<th>Total</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="order in ordersWeek | orderBy: '-created' | limitTo: 5"
+										class="text-left">
+										<td><a href="https://ui8.fetchapp.com/admin/orders?q={{ order.fetch_id }}" target="_blank">{{ order.first_name }} {{ order.last_name }}</a></td>
+										<td>{{ order.items.length }}</td>
+										<td>${{ order.total | number }}</td>
+									</tr>
+								</tbody>
+							</table>
+		                </div>
+		            </div>
+	            </div>
+	            
+	            
+	             <!--
+<div class="col-md-4">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-star fa-fw"></i> Top Products
+		                </div>
+		                <div class="panel-body">
+							<h1>Orders here</h1>
+		                </div>
+		            </div>
+	            </div>
+-->
+            
+            
+				<div class="col-md-6">
+					<div class="panel panel-primary text-center">
+		                <div class="panel-heading">
+		                	<i class="fa fa-heart fa-fw"></i> Most Liked Products
+		                </div>
+		                <div class="panel-body">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Rank</th>
+										<th>Product</th>
+										<th>Likes</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr ng-repeat="product in products | orderBy: '-likes' | limitTo: 5"
+										class="text-left">
+										<td>{{ $index+1 }}</td>
+										<td><a href="/product/{{ product.slug }}" target="_blank">{{ product.name }}</a></td>
+										<td>{{ product.likes }}</td>
+									</tr>
+								</tbody>
+							</table>
+		                </div>
+		            </div>
+	            </div>
+	            
+	            
+	           
+	        </div>
+
+
+
+
+
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+

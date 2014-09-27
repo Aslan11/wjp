@@ -1,0 +1,243 @@
+<!doctype html>
+<!--
+                    
+ _ _ _    __ _____ 
+| | | |__|  |  _  |
+| | | |  |  |   __|
+|_____|_____|__|   
+                   
+
+KPM V.1
+-->
+<html lang="en" data-ng-app="app">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
+	<title>WJP</title>
+	<link rel="icon" type="image/png" href="styles/img/favicon.ico">
+
+	<!-- CSS -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="/styles/font-awesome/css/font-awesome.min.css">
+</head>
+<body data-ng-controller="mainController" class="kill-animations">
+	<link rel="stylesheet" href="/styles/main.css">
+	<!-- Main Navigation -->
+	<nav class="main-nav">
+		<div class="inner cf">
+			<a href="/" class="brand">WJP</a>
+			<a href="/stories">STORIES</a>
+			<a href="/gallery">GALLERY</a>
+			<a href="/music">MUSIC</a>
+			<a href="/twitter">TWITTER</a>
+			<a href="/instagram">INSTAGRAM</a>
+			<a href="/tumblr">TUMBLR</a>
+			<a href="http://wjpstudio.com/">WJP STUDIO</a>
+		</div>
+	</nav>
+	<div class="sections" data-ng-switch="currentView">
+	<section class="home" data-ng-switch-when="home" data-ng-controller="homeController">
+		<div class="story featured-story"  data-ng-repeat="story in stories | reverse" style="background-image: url('{{story.coverPhoto}}')" data-ng-show="story.isFeatured == 'Yes'">
+			<a href="/story/{{story.slug}}">	
+			<div class="text-block">
+				<h5>STORIES</h5>
+				<h1 class="title">{{story.title}}</h1>
+				<p class="blurb">{{story.subTitle}}</p>
+				<h3 class="author">by {{story.author}}</h3>
+			</div>
+			</a>
+		</div>
+		<div class="wjp-name">
+			<div class="text">
+				<img src="/styles/img/wjpcut.png" alt="">
+				<img src="/styles/img/kalido.gif" alt="">
+			</div>
+		</div>
+		<div class="recent-stories cf">
+			<h5>STORIES</h5>
+			<div class="story" data-ng-repeat="story in stories | reverse | limitTo:4">
+				<a href="/story/{{story.slug}}">
+				<div class="cover-photo" style="background-image: url('{{story.coverPhoto}}')"><i class="fa fa-play-circle-o" data-ng-show="story.hasVideo == 'yes'"></i></div>
+				</a>
+				<div class="title">{{story.title}}</div>
+				<div class="sub-title">{{story.subTitle}}</div>
+				<div class="author">{{story.author}}</div>
+			</div>
+		</div>
+		<div class="recent-experiences xp-container cf">
+			<h5>GALLERY</h5>
+			<div class="xp" data-ng-repeat="xp in experiences | reverse | limitTo:2">
+				<a href="/experience/{{xp.slug}}">
+				<div class="cover-photo" style="background-image: url('{{xp.coverPhoto}}')"><i class="fa fa-play-circle-o" data-ng-show="xp.type == 'video'"></i></div>
+				</a>
+				<div class="title">{{xp.title}}</div>
+				<div class="sub-title" data-ng-bind-html="sanitize(xp.credits)"></div>
+				<div class="date">{{xp.date}}</div>
+			</div>
+		</div>
+		<div class="recent-tracks">
+			<h5>MUSIC</h5>
+			<div class="track" data-ng-repeat="track in tracks | reverse | limitTo:3">
+				<div data-ng-bind-html="sanitize(track.embedURL)"></div>
+				<div class="sub-title"><a href="/music/{{track.slug}}">{{track.subTitle}}</a></div>
+				<div class="date">{{track.date}}</div>
+			</div>
+		</div>
+		<div class="recent-tweets">
+			<h5>TWITTER</h5>
+			<div class="tweets cf">
+				<div class="tweet" data-ng-repeat="tweet in tweets | limitTo:2">
+					<header>
+						<div class="avatar" style="background: url('{{tweet.user.profile_image_url}}')"></div>
+						<a href="http://twitter.com/{{tweet.user.screen_name}}"><div class="name">{{tweet.user.name}}</div>
+						<div class="twitter-name">{{tweet.user.screen_name}}</div></a>
+					</header>
+					<div class="text">{{tweet.text}}</div>
+					<footer><i class="fa fa-twitter"></i></footer>
+				</div>
+			</div>
+		</div>
+		<div class="recent-insta">
+			<h5>INSTAGRAM</h5>
+			<div class="feed" style="width: 1226px; margin: 0 auto">
+			<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MTcwfDd8M3x8bm98NXxub25lfG9uU3RhcnR8eWVzfG5v&ve=200914" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1225px; height:525px"></iframe>
+			</div>
+		</div>
+		<div class="links">
+			<p>Say hi, share music, share ideas or send photos of yourself if you want to be casted.</p>
+			<a href="mailto:hi@westonjamespalmer.com">hi@westonjamespalmer.com</a>
+
+			<p>Follow on Instagram</p>
+			<a href="http://instagram.com/westonjamespalmer">@westonjamespalmer</a>
+
+			<p>Chat on Twitter</p>
+			<a href="http://twitter.com/westonjamesp">@westonjamesp</a>
+
+			<p>Listen on SoundCloud</p>
+			<a href="https://soundcloud.com/westonjamespalmer">@westonjamespalmer</a>
+
+			<p>Life on Tumblr</p>
+			<a href="http://westonjamespalmer.tumblr.com">@westonjamespalmer</a>
+		</div>
+	</section>
+	<section class="stories"  data-ng-switch-when="stories" data-ng-controller="storiesController">
+		<div class="story-container cf">
+			<div class="story" data-ng-repeat="story in stories | reverse">
+				<a href="/story/{{story.slug}}">
+				<div class="cover-photo" style="background-image: url('{{story.coverPhoto}}')"><i class="fa fa-play-circle-o" data-ng-show="story.hasVideo == 'yes'"></i></div>
+				</a>
+				<div class="title">{{story.title}}</div>
+				<div class="sub-title">{{story.subTitle}}</div>
+				<div class="author">{{story.author}}</div>
+			</div>
+		</div>
+	</section>
+	<section class="gallery"  data-ng-switch-when="gallery" data-ng-controller="experiencesController">
+		<div class="xp-container cf">
+			<div class="xp" data-ng-repeat="xp in experiences | reverse">
+				<a href="/experience/{{xp.slug}}">
+				<div class="cover-photo" style="background-image: url('{{xp.coverPhoto}}')"><i class="fa fa-play-circle-o" data-ng-show="xp.type == 'video'"></i></div>
+				</a>
+				<div class="title">{{xp.title}}</div>
+				<div class="sub-title" data-ng-bind-html="sanitize(xp.credits)"></div>
+				<div class="date">{{xp.date}}</div>
+			</div>
+		</div>
+	</section>
+	<section class="music"  data-ng-switch-when="music" data-ng-controller="musicController">
+		<div class="tracks">
+			<div class="track" data-ng-repeat="track in tracks | reverse">
+				<div data-ng-bind-html="sanitize(track.embedURL)"></div>
+				<div class="sub-title"><a href="/music/{{track.slug}}">{{track.subTitle}}</a></div>
+				<div class="date">{{track.date}}</div>
+			</div>
+		</div>
+	</section>
+	<section class="twitter"  data-ng-switch-when="twitter" data-ng-controller="twitterController">
+		<div class="tweets">
+			<div class="tweet" data-ng-repeat="tweet in tweets">
+				<header>
+					<div class="avatar" style="background: url('{{tweet.user.profile_image_url}}')"></div>
+					<a href="http://twitter.com/{{tweet.user.screen_name}}"><div class="name">{{tweet.user.name}}</div>
+					<div class="twitter-name">{{tweet.user.screen_name}}</div></a>
+				</header>
+				<div class="text">{{tweet.text}}</div>
+				<footer><i class="fa fa-twitter"></i></footer>
+			</div>
+		</div>
+	</section>
+	<section class="instagram" data-ng-switch-when="instagram">
+		<div class="feed">
+			<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MTcwfDd8OHx8bm98NXxmYWRlT3V0fG9uU3RhcnR8eWVzfG5v&ve=140914" title="Instagram Widget" class="snapwidget-widget feed" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1225px; height:1400px"></iframe>
+		</div>
+	</section>	
+	<section class="story-page" data-ng-switch-when="story" data-ng-controller="storyController">
+		<nav>
+			<a href="/"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;HOME</a>
+			<div class="viewcount"><i class="fa fa-eye"></i>&nbsp;{{story.pageViews}}</div>
+			<div class="date">{{story.date}}</div>
+		</nav>
+		<div class="details">
+			<div class="title">{{story.title}}</div>
+			<div class="subtitle">{{story.subTitle}}</div>
+			<div class="author">By&nbsp;{{story.author}}</div>
+		</div>
+
+		<div class="content">
+			<div data-ng-bind-html="sanitize(story.content)"></div>
+		</div>
+
+		<div class="social">
+			<a href="#twitter">
+				<i class="fa fa-twitter"></i>
+			</a>
+			<a href="#facebook">
+				<i class="fa fa-facebook"></i>
+			</a>
+			<a href="#tumblr">
+				<i class="fa fa-tumblr"></i>
+			</a>
+			<a href="#pinterest">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</div>
+	</section>
+	<section class="experience-page" data-ng-switch-when="experience" data-ng-controller="experienceController">
+		<div class="feature">
+			<div class="photo" data-ng-show="xp.type == 'single'" style="background-image: url('{{xp.coverPhoto}}')">
+			</div>
+			<div class="slideshow" data-ng-show="xp.type == 'slider'" slick>
+				<div class="slide" data-ng-repeat="slide in slides" style="background-image: url('{{slide}}')">
+					
+				</div>
+			</div>
+			<div class="video" data-ng-show="xp.type == 'video'" data-ng-bind-html="sanitize(xp.videoEmbed)"></div>
+		</div>
+		<div class="social">
+			<a href="#twitter">
+				<i class="fa fa-twitter"></i>
+			</a>
+			<a href="#facebook">
+				<i class="fa fa-facebook"></i>
+			</a>
+			<a href="#tumblr">
+				<i class="fa fa-tumblr"></i>
+			</a>
+			<a href="#pinterest">
+				<i class="fa fa-pinterest"></i>
+			</a>
+		</div>
+		<div class="details">
+			<div class="title">{{xp.title}}</div>
+			<div class="credits" data-ng-bind-html="sanitize(xp.credits)"></div>
+		</div>
+		<div class="content" data-ng-bind-html="sanitize(xp.content)"></div>
+	</section>
+	</div>
+
+	<!-- Scripts -->
+	<script src="/scripts/vendor.js"></script>
+	<script src="/scripts/slick.min.js"></script>
+	<script src="/scripts/app.js"></script>
+</body>
+</html>

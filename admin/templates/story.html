@@ -1,0 +1,251 @@
+	
+
+
+	<div class="row">
+		<div class="col-lg-12 clearfix" style="margin-bottom: 20px;">
+			<h1 class="page-header" ng-if="!story._id">Create Story</h1>
+			<h1 class="page-header" ng-if="story._id">Edit Story</h1>
+			
+			<div class="pull-left">
+				<button class="btn btn-info" ng-if="story._id" ng-click="save(false)"><i class="fa fa-retweet fa-fw"></i> Save</button>
+				<button class="btn btn-primary" ng-click="save(true)"><i class="fa fa-cloud-upload fa-fw"></i> Save & Exit</button>
+				<a href="#/stories" class="btn btn-default">Cancel</a>
+			</div>
+			<div class="pull-right" ng-if="story._id">
+				<button class="btn btn-danger" ng-click="delete()"><i class="fa fa-ban fa-fw"></i> Delete</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">General</h3>
+				</div>
+				<div class="panel-body">
+		
+					<div class="form-group">
+						<label>Story Title</label>
+						<input type="text" class="form-control" ng-model="story.title" />
+					</div>
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Sub-Title</label>
+								<input type="text" class="form-control" ng-model="story.subTitle" />
+							</div>
+						</div>
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Author</label>
+								<input type="text" class="form-control" ng-model="story.author" />
+							</div>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>URL Slug</label>
+								<input type="text" class="form-control" ng-model="story.slug" />
+							</div>
+						</div>	
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Date</label>
+								<input type="text" class="form-control" ng-model="story.date" />
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Feature on Homepage?</label>
+								<select ng-model="story.isFeatured" class="form-control">
+									<option value="no">No</option>
+									<option value="Yes">Yes</option>
+								</select>
+							</div>
+						</div>	
+						<div class="col-xs-6">
+							<div class="form-group">
+								<label>Page Views</label>
+								<input type="text" class="form-control" ng-model="story.pageViews" />
+							</div>
+						</div>
+					</div>
+					<div class="row">
+					<div class="form-group col-xs-12">
+						<label>Cover-Photo URL</label>
+						<input type="text" class="form-control" ng-model="story.coverPhoto">
+					</div>
+					</div>
+						
+					<div class="row">
+					<div class="form-group col-xs-12">
+						<label>Includes Video?</label>
+						<select ng-model="story.hasVideo" class="form-control">
+							<option value="no">No</option>
+							<option value="yes">Yes</option>
+						</select>
+					</div>
+					</div>
+					
+					<div class="row" ng-show="story.hasVideo == 'yes'">
+					<div class="form-group col-xs-12">
+						<label>Video URL</label>
+						<input type="text" class="form-control" ng-model="story.VideoURL">
+					</div>
+					</div>
+
+					<div class="row">
+					<div class="form-group col-xs-12">
+						<label>Status</label>
+						<select ng-model="story.status" class="form-control">
+							<option value="inactive">Inactive</option>
+							<option value="staging">Staging</option>
+							<option value="active">Active</option>
+						</select>
+					</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Page Content</h3>
+				</div>
+				<div class="panel-body">
+					<div class="btn-group" style="margin-bottom: 20px;">
+						<button 
+							class="btn btn-default" 
+							ng-class="{active:devTab == 'html'}" 
+							ng-click="devTab = 'html'">HTML</button>
+						<button 
+							class="btn btn-default" 
+							ng-class="{active:devTab == 'css'}" 
+							ng-click="devTab = 'css'">CSS</button>
+						<button 
+							class="btn btn-default" 
+							ng-class="{active:devTab == 'javascript'}" 
+							ng-click="devTab = 'javascript'">JS</button>
+					</div>
+
+					<div style="height:500px;">
+						<div 
+							style="height:500px;"
+							ng-show="devTab == 'html'" 
+							ui-ace="{
+								theme: 'github',
+								mode: 'html',
+								useWrapMode: true
+							}"
+							ng-model="story.content"></div>
+						<div 
+							style="height:500px;"
+							ng-show="devTab == 'css'" 
+							ui-ace="{
+								theme: 'github',
+								mode: 'css',
+								useWrapMode: true
+							}"
+							ng-model="story.css"></div>
+						<div 
+							style="height:500px;"
+							ng-show="devTab == 'javascript'" 
+							ui-ace="{
+								theme: 'github',
+								mode: 'javascript',
+								useWrapMode: true
+							}"
+							ng-model="story.js"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6" style="display: none;">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Upload Images <small>(Coming soon)</small></h3>
+				</div>
+				<div class="panel-body">
+
+					<div class="input-group form-group">
+						<input type="text" class="form-control" />
+						<span class="input-group-addon btn">&times;</span>
+					</div>
+
+					<div class="input-group">
+						<span class="input-group-btn">
+							<span class="btn btn-default btn-file">
+								<i class="fa fa-folder-open fa-fw"></i>
+								<input type="file">
+							</span>
+						</span>
+						<input type="text" class="form-control">
+						<span class="input-group-btn">
+							<span class="btn btn-primary btn-file">
+								<i class="fa fa-cloud-upload fa-fw"></i> Upload
+							</span>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		
+
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-lg-12 clearfix" style="margin: 0px 0px 30px 0px;">
+			<div class="pull-left">
+				<button class="btn btn-info" ng-click="save(false)"><i class="fa fa-retweet fa-fw"></i> Save</button>
+				<button class="btn btn-primary" ng-click="save(true)"><i class="fa fa-cloud-upload fa-fw"></i> Save & Exit</button>
+				<a href="#/stories" class="btn btn-default">Cancel</a>
+			</div>
+			<div class="pull-right" ng-if="story._id">
+				<button class="btn btn-danger" ng-click="delete()"><i class="fa fa-ban fa-fw"></i> Delete</button>
+			</div>
+		</div>
+	</div>
+
+
+	<style>
+		.btn-file {
+		    position: relative;
+		    overflow: hidden;
+		}
+		.btn-file input[type=file] {
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    min-width: 100%;
+		    min-height: 100%;
+		    font-size: 999px;
+		    text-align: right;
+		    opacity: 0;
+		    outline: none;
+		    background: white;
+		    cursor: inherit;
+		    display: block;
+		}
+</style>
+
+
+
+
+
+
+
+
+
