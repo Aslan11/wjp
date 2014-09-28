@@ -38,6 +38,13 @@ section{
 	overflow-y: scroll;
 	transform: translate3d(0,0,0);
 	backface-visibility: hidden;
+	opacity: 1;
+	transition: opacity .6s .6s;
+
+	&.ghost{
+		pointer-events: none;
+		opacity: 0;
+	}
 
 	&.ng-hide{
 		// display: block !important;

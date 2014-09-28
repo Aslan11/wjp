@@ -38,7 +38,7 @@ Dev: +KPM+
 		</div>
 	</nav>
 	<div class="sections" data-ng-switch="currentView">
-	<section class="home" data-ng-switch-when="home" data-ng-controller="homeController">
+	<section class="home" data-ng-controller="homeController">
 		<div class="story featured-story"  data-ng-repeat="story in stories | reverse" style="background-image: url('{{story.coverPhoto}}')" data-ng-show="story.isFeatured == 'Yes'">
 			<a href="/story/{{story.slug}}">	
 			<div class="text-block">
@@ -207,64 +207,68 @@ Dev: +KPM+
 		<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MjA0fDd8OHx8bm98Mnxub25lfG9uU3RhcnR8bm98eWVz&ve=270914" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
 		</div>
 	</section>	
-	<section class="story-page" data-ng-switch-when="story" data-ng-controller="storyController">
-		<nav>
-			<a href="/" class="gohomerodger"></a>
+	<section class="story-page" data-ng-class="{'ghost': currentView != 'story'}">
+		<div class="story-socket" data-ng-switch-when="story" data-ng-controller="storyController"> 
+			<nav>
+				<a href="javascript:history.go(-1)" class="gohomerodger"></a>
 
-			<div class="viewcount">&nbsp;{{story.pageViews}}</div>
-			<i class="eye-icon"></i>
-			<div class="date">{{story.date}}</div>
-		</nav>
-		<div class="details">
-			<div class="title">{{story.title}}</div>
-			<div class="subtitle">{{story.subTitle}}</div>
-			<div class="author">By&nbsp;{{story.author}}</div>
-		</div>
+				<div class="viewcount">&nbsp;{{story.pageViews}}</div>
+				<i class="eye-icon"></i>
+				<div class="date">{{story.date}}</div>
+			</nav>
+			<div class="details">
+				<div class="title">{{story.title}}</div>
+				<div class="subtitle">{{story.subTitle}}</div>
+				<div class="author">By&nbsp;{{story.author}}</div>
+			</div>
 
-		<div class="content">
-			<div data-ng-bind-html="sanitize(story.content)"></div>
-		</div>
+			<div class="content">
+				<div data-ng-bind-html="sanitize(story.content)"></div>
+			</div>
 
-		<div class="social">
-			
-			<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
-				<i class="fa fa-twitter"></i>
-			</a>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
-				<i class="fa fa-facebook"></i>
-			</a>
-			<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
-				<i class="fa fa-pinterest"></i>
-			</a>
+			<div class="social">
+				
+				<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
+					<i class="fa fa-facebook"></i>
+				</a>
+				<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
+					<i class="fa fa-pinterest"></i>
+				</a>
+			</div>
 		</div>
 	</section>
-	<section class="experience-page" data-ng-switch-when="experience" data-ng-controller="experienceController">
-		<div class="feature">
-			<div class="photo" data-ng-show="xp.type == 'single'" style="background-image: url('{{xp.coverPhoto}}')">
-			</div>
-			<div class="slideshow" data-ng-show="xp.type == 'slider'" slick>
-				<div class="slide" data-ng-repeat="slide in slides" style="background-image: url('{{slide}}')">
-					
+	<section class="experience-page" data-ng-class="{'ghost': currentView != 'experience'}">
+		<div class="experience-socket" data-ng-switch-when="experience" data-ng-controller="experienceController">
+			<div class="feature">
+				<div class="photo" data-ng-show="xp.type == 'single'" style="background-image: url('{{xp.coverPhoto}}')">
 				</div>
+				<div class="slideshow" data-ng-show="xp.type == 'slider'" slick>
+					<div class="slide" data-ng-repeat="slide in slides" style="background-image: url('{{slide}}')">
+						
+					</div>
+				</div>
+				<div class="video" data-ng-show="xp.type == 'video'" data-ng-bind-html="sanitize(xp.videoEmbed)"></div>
 			</div>
-			<div class="video" data-ng-show="xp.type == 'video'" data-ng-bind-html="sanitize(xp.videoEmbed)"></div>
+			<div class="social">
+				<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
+					<i class="fa fa-facebook"></i>
+				</a>
+				<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
+					<i class="fa fa-pinterest"></i>
+				</a>
+			</div>
+			<div class="details">
+				<div class="title">{{xp.title}}</div>
+				<div class="credits" data-ng-bind-html="sanitize(xp.credits)"></div>
+			</div>
+			<div class="content" data-ng-bind-html="sanitize(xp.content)"></div>
 		</div>
-		<div class="social">
-			<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
-				<i class="fa fa-twitter"></i>
-			</a>
-			<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
-				<i class="fa fa-facebook"></i>
-			</a>
-			<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
-				<i class="fa fa-pinterest"></i>
-			</a>
-		</div>
-		<div class="details">
-			<div class="title">{{xp.title}}</div>
-			<div class="credits" data-ng-bind-html="sanitize(xp.credits)"></div>
-		</div>
-		<div class="content" data-ng-bind-html="sanitize(xp.content)"></div>
 	</section>
 	</div>
 
