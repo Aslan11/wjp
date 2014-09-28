@@ -11,14 +11,19 @@
 	.inner{
 		width: auto;
 		margin: 0 auto;
-		max-width: 1200px;
+		max-width: 864px;
 		margin: 0 auto;
 
 		a{
 			display: block;
 			float: left;
-			margin-right: 6%;
+			margin-right: 4%;
 			font-family: 'sackers';
+			font-weight: 100;
+			font-size: 12px;
+			padding-top: 2px;
+			letter-spacing: 0.1em;
+			color: #4a4a4a;
 
 			&:last-of-type{
 				margin-right: 0;
@@ -26,9 +31,15 @@
 
 			&.brand{
 				font-family: 'sackers' , sans-serif;
-				font-size: 22px;
+				font-size: 20px;
 				position: relative;
-				top: -6px;
+				top: 1px;
+				width: 55px;
+				height: 15px;
+				background: url('img/wjpnav.png');
+				background-size: 55px;
+				background-position: center center;
+				background-repeat: no-repeat;
 			}
 		}
 	}

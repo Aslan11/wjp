@@ -7,7 +7,9 @@
 |_____|_____|__|   
                    
 
-KPM V.1
+Ver: 1.0
+Dev: +KPM+
+
 -->
 <html lang="en" data-ng-app="app">
 <head>
@@ -17,7 +19,7 @@ KPM V.1
 	<link rel="icon" type="image/png" href="styles/img/favicon.ico">
 
 	<!-- CSS -->
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="//cloud.typography.com/7802512/678786/css/fonts.css" />
 	<link rel="stylesheet" href="/styles/font-awesome/css/font-awesome.min.css">
 </head>
 <body data-ng-controller="mainController" class="kill-animations">
@@ -25,14 +27,14 @@ KPM V.1
 	<!-- Main Navigation -->
 	<nav class="main-nav">
 		<div class="inner cf">
-			<a href="/" class="brand">WJP</a>
+			<a href="/" class="brand"></a>
 			<a href="/stories">STORIES</a>
 			<a href="/gallery">GALLERY</a>
 			<a href="/music">MUSIC</a>
 			<a href="/twitter">TWITTER</a>
 			<a href="/instagram">INSTAGRAM</a>
-			<a href="/tumblr">TUMBLR</a>
-			<a href="http://wjpstudio.com/">WJP STUDIO</a>
+			<a href="http://westonjamespalmer.tumblr.com/" target="_blank">TUMBLR</a>
+			<a href="http://wjpstudio.com/" target="_blank">WJP STUDIO</a>
 		</div>
 	</nav>
 	<div class="sections" data-ng-switch="currentView">
@@ -99,8 +101,9 @@ KPM V.1
 		</div>
 		<div class="recent-insta">
 			<h5>INSTAGRAM</h5>
-			<div class="feed" style="width: 1226px; margin: 0 auto">
-			<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MTcwfDd8M3x8bm98NXxub25lfG9uU3RhcnR8eWVzfG5v&ve=200914" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1225px; height:525px"></iframe>
+			<div class="feed">
+			<script src="http://snapwidget.com/js/snapwidget.js"></script>
+			<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MjA0fDd8M3x8bm98Mnxub25lfG9uU3RhcnR8bm98eWVz&ve=270914" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
 			</div>
 		</div>
 		<div class="links">
@@ -121,6 +124,12 @@ KPM V.1
 		</div>
 	</section>
 	<section class="stories"  data-ng-switch-when="stories" data-ng-controller="storiesController">
+		<div class="story-cutout">
+			<div class="text">
+				<img src="/styles/img/storiescut.png" alt="stories">
+				<img src="/styles/img/kalido.gif" alt="kaleido">
+			</div>
+		</div>
 		<div class="story-container cf">
 			<div class="story" data-ng-repeat="story in stories | reverse">
 				<a href="/story/{{story.slug}}">
@@ -133,6 +142,12 @@ KPM V.1
 		</div>
 	</section>
 	<section class="gallery"  data-ng-switch-when="gallery" data-ng-controller="experiencesController">
+		<div class="gallery-cutout">
+			<div class="text">
+				<img src="/styles/img/gallerycut.png" alt="gallery">
+				<img src="/styles/img/kalido.gif" alt="kaleido">
+			</div>
+		</div>
 		<div class="xp-container cf">
 			<div class="xp" data-ng-repeat="xp in experiences | reverse">
 				<a href="/experience/{{xp.slug}}">
@@ -145,6 +160,12 @@ KPM V.1
 		</div>
 	</section>
 	<section class="music"  data-ng-switch-when="music" data-ng-controller="musicController">
+		<div class="music-cutout">
+			<div class="text">
+				<img src="/styles/img/musiccut.png" alt="twitter">
+				<img src="/styles/img/kalido.gif" alt="kaleido">
+			</div>
+		</div>
 		<div class="tracks">
 			<div class="track" data-ng-repeat="track in tracks | reverse">
 				<div data-ng-bind-html="sanitize(track.embedURL)"></div>
@@ -154,6 +175,12 @@ KPM V.1
 		</div>
 	</section>
 	<section class="twitter"  data-ng-switch-when="twitter" data-ng-controller="twitterController">
+		<div class="twitter-cutout">
+			<div class="text">
+				<img src="/styles/img/twittercut.png" alt="twitter">
+				<img src="/styles/img/kalido.gif" alt="kaleido">
+			</div>
+		</div>
 		<div class="tweets">
 			<div class="tweet" data-ng-repeat="tweet in tweets">
 				<header>
@@ -161,20 +188,31 @@ KPM V.1
 					<a href="http://twitter.com/{{tweet.user.screen_name}}"><div class="name">{{tweet.user.name}}</div>
 					<div class="twitter-name">{{tweet.user.screen_name}}</div></a>
 				</header>
-				<div class="text">{{tweet.text}}</div>
+				<div class="text">
+					<a href="{{tweet.entities.urls[0].url}}" target="_blank">{{tweet.text}}</a>
+				</div>
 				<footer><i class="fa fa-twitter"></i></footer>
 			</div>
 		</div>
 	</section>
 	<section class="instagram" data-ng-switch-when="instagram">
+		<div class="insta-cutout">
+			<div class="text">
+				<img src="/styles/img/instacut.png" alt="instagram">
+				<img src="/styles/img/kalido.gif" alt="kaleido">
+			</div>
+		</div>
 		<div class="feed">
-			<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MTcwfDd8OHx8bm98NXxmYWRlT3V0fG9uU3RhcnR8eWVzfG5v&ve=140914" title="Instagram Widget" class="snapwidget-widget feed" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:1225px; height:1400px"></iframe>
+		<script src="http://snapwidget.com/js/snapwidget.js"></script>
+		<iframe src="http://snapwidget.com/in/?u=d2VzdG9uamFtZXNwYWxtZXJ8aW58MjA0fDd8OHx8bm98Mnxub25lfG9uU3RhcnR8bm98eWVz&ve=270914" title="Instagram Widget" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%;"></iframe>
 		</div>
 	</section>	
 	<section class="story-page" data-ng-switch-when="story" data-ng-controller="storyController">
 		<nav>
-			<a href="/"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;HOME</a>
-			<div class="viewcount"><i class="fa fa-eye"></i>&nbsp;{{story.pageViews}}</div>
+			<a href="/" class="gohomerodger"></a>
+
+			<div class="viewcount">&nbsp;{{story.pageViews}}</div>
+			<i class="eye-icon"></i>
 			<div class="date">{{story.date}}</div>
 		</nav>
 		<div class="details">
@@ -188,16 +226,14 @@ KPM V.1
 		</div>
 
 		<div class="social">
-			<a href="#twitter">
+			
+			<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
 				<i class="fa fa-twitter"></i>
 			</a>
-			<a href="#facebook">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
 				<i class="fa fa-facebook"></i>
 			</a>
-			<a href="#tumblr">
-				<i class="fa fa-tumblr"></i>
-			</a>
-			<a href="#pinterest">
+			<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
 				<i class="fa fa-pinterest"></i>
 			</a>
 		</div>
@@ -214,16 +250,13 @@ KPM V.1
 			<div class="video" data-ng-show="xp.type == 'video'" data-ng-bind-html="sanitize(xp.videoEmbed)"></div>
 		</div>
 		<div class="social">
-			<a href="#twitter">
+			<a href="http://twitter.com/home?status=Another%20amazing%20story%20by%20@westonjamesp%20http://westonjamespalmer.com" target="blank">
 				<i class="fa fa-twitter"></i>
 			</a>
-			<a href="#facebook">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=http://westonjamespalmer.com" target="_blank">
 				<i class="fa fa-facebook"></i>
 			</a>
-			<a href="#tumblr">
-				<i class="fa fa-tumblr"></i>
-			</a>
-			<a href="#pinterest">
+			<a href="http://pinterest.com/pin/create/button/?url=http://westonjamespalmer.com&amp;media=http://westonjamespalmer.com&amp;description=Another%20amazing%20story%20by%20Weston%20James%20Palmer.">
 				<i class="fa fa-pinterest"></i>
 			</a>
 		</div>
