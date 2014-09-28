@@ -389,18 +389,53 @@ section {
   -moz-transition: opacity 1s 0.6s;
   -o-transition: opacity 1s 0.6s;
   transition: opacity 1s 0.6s; }
-  section.experience-page {
-    -webkit-transition: opacity 1s 2s;
-    -moz-transition: opacity 1s 2s;
-    -o-transition: opacity 1s 2s;
-    transition: opacity 1s 2s; }
+  section.experience-page.ghost:after {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s; }
+  section.experience-page:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    -webkit-transition: opacity 1s 1.6s;
+    -moz-transition: opacity 1s 1.6s;
+    -o-transition: opacity 1s 1.6s;
+    transition: opacity 1s 1.6s;
+    opacity: 0;
+    pointer-events: none; }
+  section.story-page.ghost:after {
+    opacity: 1;
+    -webkit-transition: opacity 1s;
+    -moz-transition: opacity 1s;
+    -o-transition: opacity 1s;
+    transition: opacity 1s; }
+  section.story-page:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    -webkit-transition: opacity 1s 1.6s;
+    -moz-transition: opacity 1s 1.6s;
+    -o-transition: opacity 1s 1.6s;
+    transition: opacity 1s 1.6s;
+    opacity: 0;
+    pointer-events: none; }
   section.ghost {
     pointer-events: none;
     opacity: 0;
-    -webkit-transition: opacity 1.5s;
-    -moz-transition: opacity 1.5s;
-    -o-transition: opacity 1.5s;
-    transition: opacity 1.5s; }
+    -webkit-transition: opacity 1.5s 0.6;
+    -moz-transition: opacity 1.5s 0.6;
+    -o-transition: opacity 1.5s 0.6;
+    transition: opacity 1.5s 0.6; }
   section.ng-hide-remove {
     display: block !important; }
   section.ng-hide-add {
@@ -1196,6 +1231,12 @@ section {
       .experience-page .feature > * > div {
         width: 100%;
         height: 100%; }
+  .experience-page .slide {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center; }
   .experience-page .slick-track {
     height: 100%; }
     .experience-page .slick-track .slide {
