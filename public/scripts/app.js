@@ -137,7 +137,11 @@ app.directive('slick', function() {
 
 /*	Experience Controller
 ---------------------------------------------------------------------- */
-app.controller('experienceController', function($scope, $routeParams, Experiences, $location, $timeout, $sce){
+app.controller('experienceController', function($scope, $routeParams, Experiences, $location, $timeout, $sce, $window){
+
+	var socket = document.getElementById('socket');
+
+	socket.scrollTop = 100;
 
 	Experiences.All.get({slug: $routeParams.slug}, function(experience){
 						

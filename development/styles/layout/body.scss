@@ -39,11 +39,16 @@ section{
 	transform: translate3d(0,0,0);
 	backface-visibility: hidden;
 	opacity: 1;
-	transition: opacity .6s .6s;
+	transition: opacity 1s .6s;
+
+	&.experience-page{
+		transition: opacity 1s 2s;		
+	}
 
 	&.ghost{
 		pointer-events: none;
 		opacity: 0;
+		transition: opacity 1.5s;
 	}
 
 	&.ng-hide{

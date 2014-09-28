@@ -1,5 +1,56 @@
 .experience-page{
 	overflow: hidden;
+	padding-top: 0;
+	z-index: 9999;
+
+	nav{
+		font-family: 'sackers';
+		width: 100%;
+		height: 100px;
+		box-sizing: border-box;
+		padding-top: 30px;
+		padding-left: 30px;
+		padding-right: 30px;
+		font-size: 12px;
+		color: #757575;
+
+		.gohomerodger{
+			width: 36px;
+			height: 35px;
+			background: url('img/x.png');
+			background-size: cover;
+			background-repeat: no-repeat;
+			position: relative;
+			top: -8px;
+			left: -6px
+
+		}
+
+		i{
+			width: 20px;
+			height: 11px;
+			background: url('img/eye.png');
+			background-size: cover;
+			background-repeat: no-repeat;
+			position: relative;
+			left: 16px;
+			top: 1px;
+			float: right;
+			display: block;
+		}
+
+		>*{
+			display: inline-block;
+		}
+
+		.date, .viewcount{
+			float: right;
+		}
+
+		.viewcount{
+			margin-left: 20px;
+		}
+	}
 	.experience-socket{
 		width: 100%;
 		height: 100%;

@@ -211,7 +211,6 @@ Dev: +KPM+
 		<div class="story-socket" data-ng-switch-when="story" data-ng-controller="storyController"> 
 			<nav>
 				<a href="javascript:history.go(-1)" class="gohomerodger"></a>
-
 				<div class="viewcount">&nbsp;{{story.pageViews}}</div>
 				<i class="eye-icon"></i>
 				<div class="date">{{story.date}}</div>
@@ -241,7 +240,13 @@ Dev: +KPM+
 		</div>
 	</section>
 	<section class="experience-page" data-ng-class="{'ghost': currentView != 'experience'}">
-		<div class="experience-socket" data-ng-switch-when="experience" data-ng-controller="experienceController">
+		<div id="socket" class="experience-socket" data-ng-switch-when="experience" data-ng-controller="experienceController">
+			<nav>
+				<a href="javascript:history.go(-1)" class="gohomerodger"></a>
+				<div class="viewcount">&nbsp;{{xp.pageViews}}</div>
+				<i class="eye-icon"></i>
+				<div class="date">{{xp.date}}</div>
+			</nav>
 			<div class="feature">
 				<div class="photo" data-ng-show="xp.type == 'single'" style="background-image: url('{{xp.coverPhoto}}')">
 				</div>
