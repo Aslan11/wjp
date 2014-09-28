@@ -125,9 +125,11 @@ app.directive('slick', function() {
               $('.slideshow').slick({
                 autoplay: true,
                 dots: true,
-                fade: true
+                fade: true,
+                speed: 2000,
+                infinite: true
               });
-            }, 1000);
+            }, 2000);
         }
     };
 });
