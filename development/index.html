@@ -14,7 +14,6 @@ Dev: +KPM+
 <html lang="en" ng-app="app">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 	<title>WJP</title>
 	<link rel="icon" type="image/png" href="styles/img/favicon.ico">
 
@@ -183,8 +182,21 @@ Dev: +KPM+
 		</div>
 		<div class="tweets">
 			<div class="tweet" ng-repeat="tweet in tweets">
+				<div ng-show="tweet.retweeted_status != null">
 				<header>
-					<div class="avatar" style="background: url('{{tweet.user.profile_image_url}}')"></div>
+					<div class="avatar" style="background-image: url('{{tweet.retweeted_status.user.profile_image_url}}')"></div>
+					<a href="http://twitter.com/{{tweet.retweeted_status.user.screen_name}}"><div class="name">{{tweet.retweeted_status.user.name}}</div>
+					<div class="twitter-name">{{tweet.retweeted_status.user.screen_name}}</div></a>
+				</header>
+				<div class="text">
+					<a href="{{tweet.entities.urls[0].url}}" target="_blank">{{tweet.retweeted_status.text}}</a>
+				</div>
+				<footer><i class="fa fa-twitter"></i></footer>
+				</div>
+
+				<div ng-hide="tweet.retweeted_status != null">
+				<header>
+					<div class="avatar" style="background-image: url('{{tweet.user.profile_image_url}}')"></div>
 					<a href="http://twitter.com/{{tweet.user.screen_name}}"><div class="name">{{tweet.user.name}}</div>
 					<div class="twitter-name">{{tweet.user.screen_name}}</div></a>
 				</header>
@@ -192,6 +204,7 @@ Dev: +KPM+
 					<a href="{{tweet.entities.urls[0].url}}" target="_blank">{{tweet.text}}</a>
 				</div>
 				<footer><i class="fa fa-twitter"></i></footer>
+				</div>
 			</div>
 		</div>
 	</section>
