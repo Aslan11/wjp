@@ -33,7 +33,7 @@ app.configure(function() {
 	app.use("/admin/templates", express.static(__dirname + "/admin/templates"));
 	app.use("/admin/tests", express.static(__dirname + "/admin/tests"));
 	app.use(express.bodyParser({uploadDir:'./public/styles/img/'}));
-	app.use(express.methodOverride()); 
+	app.use(express.methodOverride());
 });
 
 /*	Add Headers
@@ -83,7 +83,7 @@ require('./routes/tracks')(app);
 
 /*	Admin Route
 ---------------------------------------------------------------------- */
-app.get('/admin', express.basicAuth('Weston James Palmer', 'Weston123456789'), function(req, res){
+app.get('/admin', express.basicAuth('admin', 'admin'), function(req, res){
 	app.configure(function() {
 		app.use("/admin", express.static(__dirname + "/admin"));
 	});
@@ -104,6 +104,6 @@ app.get('*', function(req, res){
 
 /*	Start the app
 ---------------------------------------------------------------------- */
-app.listen(app.get('port'));			
+app.listen(app.get('port'));
 console.log('Killing it on '+app.get('port'));
-exports = module.exports = app; 
+exports = module.exports = app;
